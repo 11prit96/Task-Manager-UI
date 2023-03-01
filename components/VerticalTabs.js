@@ -31,7 +31,7 @@ const VerticalTabs = () => {
         tab1.style.color = "rgb(180,180,180)";
       }
 
-      if (parentContainer.scrollTop >= 60 && parentContainer.scrollTop <70) {
+      if (parentContainer.scrollTop >= 60 && parentContainer.scrollTop < 70) {
         tab2.style.background = "#dba488";
         tab2.style.color = "rgb(28,28,28)";
         tab1.style.transition = "all 1s";
@@ -75,15 +75,23 @@ const VerticalTabs = () => {
         height: "10rem",
         overflowY: "scroll",
         paddingY: "50px",
-        scrollBehavior: "smooth"
+        scrollBehavior: "smooth",
       }}
       id="main"
     >
       {drawerItems.map((item, index) => (
-        <ListItem key={index} disablePadding className={item.class} sx={{height: "60px"}}>
+        <ListItem
+          key={index}
+          disablePadding
+          className={item.class}
+          sx={{ height: "60px", transition: "all 2s" }}
+        >
           <ListItemButton>
-            {/* <ListItemIcon>{item.icon}</ListItemIcon> */}
-            <ListItemText className="secondGen_child" primary={item.name} sx={{textAlign: "center"}}/>
+            <ListItemText
+              className="secondGen_child"
+              primary={item.name}
+              sx={{ textAlign: "center" }}
+            />
           </ListItemButton>
         </ListItem>
       ))}

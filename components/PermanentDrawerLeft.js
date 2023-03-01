@@ -22,19 +22,35 @@ import BubbleChartIcon from "@mui/icons-material/BubbleChart";
 import { Typography } from "@mui/material";
 
 const drawerItems = [
-  { name: "Profile", icon: <Person4Icon sx={{color: theme.palette.tertiary.dark}}/> },
-  { name: "Schedule", icon: <CalendarMonthIcon sx={{color: theme.palette.tertiary.dark}}/> },
-  { name: "Overview", icon: <InsertChartIcon sx={{color: theme.palette.tertiary.dark}}/> },
-  { name: "Chat", icon: <ChatBubbleOutlineIcon sx={{color: theme.palette.tertiary.dark}}/> },
-  { name: "Settings", icon: <SettingsIcon sx={{color: theme.palette.tertiary.dark}}/> },
+  {
+    name: "Profile",
+    icon: <Person4Icon sx={{ color: theme.palette.tertiary.dark }} />,
+  },
+  {
+    name: "Schedule",
+    icon: <CalendarMonthIcon sx={{ color: theme.palette.tertiary.dark }} />,
+  },
+  {
+    name: "Overview",
+    icon: <InsertChartIcon sx={{ color: theme.palette.tertiary.dark }} />,
+  },
+  {
+    name: "Chat",
+    icon: <ChatBubbleOutlineIcon sx={{ color: theme.palette.tertiary.dark }} />,
+  },
+  {
+    name: "Settings",
+    icon: <SettingsIcon sx={{ color: theme.palette.tertiary.dark }} />,
+  },
 ];
 
 export default function PermanentDrawerLeft() {
   return (
     <Drawer
       sx={{
-        display: {xs: "none", md: "flex"},
+        display: { xs: "none", md: "flex" },
         width: "15%",
+        height: "100vh",
         flexShrink: 0,
         "& .MuiDrawer-paper": {
           width: "15%",
@@ -47,33 +63,58 @@ export default function PermanentDrawerLeft() {
       anchor="left"
     >
       <Toolbar />
-      <BubbleChartIcon
-        sx={{
-          fontSize: "3rem",
-          color: theme.palette.secondary.light,
-          marginLeft: "4rem",
-        }}
-      />
+      <Box
+        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+      >
+        <BubbleChartIcon
+          sx={{
+            fontSize: "3rem",
+            color: theme.palette.secondary.light,
+          }}
+        />
+      </Box>
       <Toolbar />
-      <List>
+      <List sx={{position: "absolute", top: "33%"}}>
         {drawerItems.map((item, index) => (
-          <ListItem key={index} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText primary={item.name} />
+          <ListItem
+            key={index}
+            disablePadding           
+          >
+            <ListItemButton sx={{
+              display: "flex",
+              justifyContent: "space-around",
+              alignItems: "center",
+            }}>
+              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemText
+                primary={item.name}
+                primaryTypographyProps={{
+                  fontWeight: "medium",
+                  variant: "body2",
+                }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-      <Toolbar/>
-      <Toolbar/>
-      <Box sx={{display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
-      <LogoutIcon sx={{
-          color: theme.palette.secondary.light,
-        }}/>
-        <Typography sx={{cursor: "pointer", marginRight: "2rem"}}>Log Out</Typography>
+      <Toolbar />
+      <Toolbar />
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-evenly",
+          position: "absolute",
+          bottom: "5%",
+          left: "27%"
+        }}
+      >
+        <LogoutIcon
+          sx={{
+            color: theme.palette.secondary.light,
+          }}
+        />
+        <Typography sx={{ cursor: "pointer" }}>Log Out</Typography>
       </Box>
     </Drawer>
   );

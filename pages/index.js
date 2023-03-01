@@ -10,11 +10,29 @@ import theme from "@/src/theme";
 import TextField from "@mui/material/TextField";
 import MeetingData from "@/constants/MeetingData";
 import ProjectProgress from "@/components/ProjectProgress";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import FilesData from "@/constants/FilesData";
 import SearchSmallScreen from "@/components/SearchSmallScreen";
+import { useEffect, useRef } from "react";
+import { SidebarState } from "@/store/context";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function Home() {
+  // const { sidebar, handleSidebar } = SidebarState();
+  // console.log(sidebar)
+  // console.log(handleSidebar)
+
+  // const menuRef = useRef();
+
+  // useEffect(() => {
+  //   console.log(menuRef);
+  //   document.addEventListener("mousedown", (e) => {
+  //     if (!menuRef.current.contains(e.target)) {
+  //       handleSidebar();
+  //     }
+  //   });
+  // }, []);
+
   return (
     <>
       <Head>
@@ -25,40 +43,46 @@ export default function Home() {
       <Box sx={{ display: "flex" }}>
         <PermanentDrawerLeft />
         <Grid
+          // ref={menuRef}
           container
           spacing={1}
           sx={{
-            bgcolor: theme.palette.tertiary.light,
             flexGrow: 1,
+            bgcolor: theme.palette.tertiary.light,
             display: "flex",
-            justifyContent: "space-around"
+            justifyContent: "space-around",
           }}
         >
-          <Grid item xs={12} md={5} sx={{ margin: {xs: "1rem", md: "2rem"}}}>
-            <SearchSmallScreen/>
+          <Grid item xs={12} md={5} sx={{ margin: { xs: "1rem", md: "2rem" } }}>
+            <SearchSmallScreen />
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                marginBottom: "0.5rem"
+                marginBottom: "0.5rem",
+                marginX: "1rem",
               }}
             >
               <Typography
                 variant="h5"
-                sx={{ color: theme.palette.primary.dark, marginLeft: "0.5rem" }}
+                sx={{
+                  color: theme.palette.primary.dark,
+                }}
               >
                 Schedule
               </Typography>
               <Typography
-                variant="body2"
-                sx={{ color: theme.palette.primary.light, marginRight: "0.5rem" }}
+                sx={{
+                  color: theme.palette.primary.light,
+                  fontSize: { xs: "0.75rem", md: "1rem" },
+                }}
               >
                 Feb 22, 2023
               </Typography>
             </Box>
             <ScrollableTabsButtonPrevent />
-            <ProjectProgress/>
+            <ProjectProgress />
           </Grid>
           <Grid item xs={12} md={5} sx={{ margin: "2rem" }}>
             <Box
@@ -66,7 +90,7 @@ export default function Home() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                my: "1rem",
+                margin: "1rem",
               }}
             >
               <TextField
@@ -75,16 +99,32 @@ export default function Home() {
                 label="Search"
                 type="search"
                 size="small"
-                sx={{ width: "100%", marginRight: "1rem", display: {xs: "none", md: "flex"} }}
+                sx={{
+                  width: "100%",
+                  marginRight: "2rem",
+                  display: { xs: "none", md: "flex" },
+                }}
               />
-              <Avatar alt="facebook_avatar" src="/assets/Img3.jpg" sx={{display : {xs: "none", md: "flex"}}}/>
+              <SearchIcon
+                sx={{
+                  color: theme.palette.primary.main,
+                  position: "absolute",
+                  right: { md: "9rem", lg: "10rem", xl: "11rem" },
+                }}
+              />
+              <Avatar
+                alt="facebook_avatar"
+                src="/assets/Img3.jpg"
+                sx={{ display: { xs: "none", md: "flex" } }}
+              />
             </Box>
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                marginBottom: "2rem"
+                marginBottom: "2rem",
+                marginX: "1rem",
               }}
             >
               <Typography
@@ -94,19 +134,22 @@ export default function Home() {
                 Meeting
               </Typography>
               <Typography
-                variant="body2"
-                sx={{ color: theme.palette.primary.light }}
+                sx={{
+                  color: theme.palette.primary.light,
+                  fontSize: { xs: "0.75rem", md: "1rem" },
+                }}
               >
                 Feb 20 - Feb 25, 2023
               </Typography>
             </Box>
-            <MeetingData/>
+            <MeetingData />
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                marginY: "2rem"
+                marginY: "2rem",
+                marginX: "1rem",
               }}
             >
               <Typography
@@ -116,22 +159,25 @@ export default function Home() {
                 Files
               </Typography>
               <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <Typography
-                variant="body2"
-                sx={{ color: theme.palette.primary.light, marginRight: "0.5rem" }}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
               >
-                View All
-              </Typography>
-              <ArrowForwardIcon sx={{ color: theme.palette.primary.light}}/>
+                <Typography
+                  sx={{
+                    color: theme.palette.primary.light,
+                    marginRight: "0.5rem",
+                    fontSize: { xs: "0.75rem", md: "1rem" },
+                  }}
+                >
+                  View All
+                </Typography>
+                <ArrowForwardIcon sx={{ color: theme.palette.primary.light }} />
+              </Box>
             </Box>
-            </Box>
-            <FilesData/>
+            <FilesData />
           </Grid>
         </Grid>
       </Box>

@@ -43,9 +43,9 @@ export default function MeetingData() {
   return (
     <Card
       sx={{
-        width: "100%",
         height: "12rem",
         bgcolor: theme.palette.tertiary.main,
+        marginX: "1rem"
       }}
     >
       <Grid

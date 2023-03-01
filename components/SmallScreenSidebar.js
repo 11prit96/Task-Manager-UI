@@ -13,65 +13,103 @@ import theme from "@/src/theme";
 import BubbleChartIcon from "@mui/icons-material/BubbleChart";
 import { IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import TabScrollButton from '@mui/material/TabScrollButton';
+import TabScrollButton from "@mui/material/TabScrollButton";
 import VerticalTabs from "./VerticalTabs";
+import { SidebarState } from "@/store/context";
 
+export default function SmallScreenSidebar() {
+  const { sidebar, handleSidebar } = SidebarState();
 
-export default function SmallScreenSidebar({ handleSidebar }) {
   return (
-    <Drawer
-      sx={{
-        display: { xs: "flex", md: "none" },
-        flexShrink: 0,
-        "& .MuiDrawer-paper": {
-          width: "45%",
-          boxSizing: "border-box",
-          backgroundColor: theme.palette.primary.dark,
-          color: theme.palette.tertiary.dark,
-        },
-      }}
-      variant="permanent"
-      anchor="left"
-    >
-      <Box
+    <Box sx={{ display: { xs: "block", md: "none" } }}>
+      <Drawer
         sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          marginTop: "1rem"
+          display: { xs: "flex", md: "none" },
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: { xs: "100%", sm: "300px" },
+            boxSizing: "border-box",
+            backgroundColor: theme.palette.primary.dark,
+            color: theme.palette.tertiary.dark,
+          },
         }}
+        onClose={handleSidebar}
+        open={sidebar}
+        anchor="left"
       >
-        <IconButton
-          onClick={handleSidebar}
+        <Box
           sx={{
-            bgcolor: "none",
-            width: "1rem",
-            marginLeft: "1rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginTop: "1rem",
           }}
         >
-          <CloseIcon
+          <IconButton
+            onClick={handleSidebar}
             sx={{
+              bgcolor: "none",
+              width: "1rem",
+              marginLeft: "1rem",
+            }}
+          >
+            <CloseIcon
+              sx={{
+                color: theme.palette.tertiary.light,
+              }}
+            />
+          </IconButton>
+          <Typography
+            sx={{
+              cursor: "pointer",
+              marginRight: "1rem",
               color: theme.palette.tertiary.light,
             }}
+          >
+            Log Out
+          </Typography>
+        </Box>
+        <Toolbar />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <BubbleChartIcon
+            sx={{
+              fontSize: "3rem",
+              color: theme.palette.secondary.light,
+            }}
           />
-        </IconButton>
-        <Typography sx={{ cursor: "pointer", marginRight: "1rem", color: theme.palette.tertiary.light }}>
-          Log Out
-        </Typography>
-      </Box>
-      <Toolbar />
-      <BubbleChartIcon
-        sx={{
-          fontSize: "3rem",
-          color: theme.palette.secondary.light,
-          marginLeft: "4rem",
-        }}
-      />
-      <Box sx={{display: {sm: "none"} ,width: "5%", height: "0.5rem", position: "absolute", top: "20rem", left: 0, backgroundColor: "#d45339", zIndex: "2"}}/>
-      <Box sx={{display: {sm: "none"} ,width: "5%", height: "0.5rem", position: "absolute", top: "20rem", right: 0, backgroundColor: "#d45339", zIndex: "2"}}/>
-      <Toolbar />
-      <Toolbar/>
-      <VerticalTabs/>
-    </Drawer>
+        </Box>
+        <Box
+          sx={{
+            width: "5%",
+            height: "0.5rem",
+            position: "absolute",
+            top: { xs: "20rem", sm: "23rem" },
+            left: 0,
+            backgroundColor: "#d45339",
+            zIndex: "2",
+          }}
+        />
+        <Box
+          sx={{
+            width: "5%",
+            height: "0.5rem",
+            position: "absolute",
+            top: { xs: "20rem", sm: "23rem" },
+            right: 0,
+            backgroundColor: "#d45339",
+            zIndex: "2",
+          }}
+        />
+        <Toolbar />
+        <Toolbar />
+        <VerticalTabs />
+      </Drawer>
+    </Box>
   );
 }

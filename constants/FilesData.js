@@ -58,7 +58,7 @@ const dataArr = [
 
 export default function FilesData() {
   return (
-    <>
+    <Box sx={{marginX: "1rem"}}>
       {dataArr.map((item, index) => (
         <Card
           key={index}
@@ -112,6 +112,6 @@ export default function FilesData() {
           </Box>
         </Card>
       ))}
-    </>
+    </Box>
   );
 }

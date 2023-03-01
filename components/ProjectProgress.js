@@ -10,7 +10,7 @@ import DoughnutPieChart from "./DoughnutPieChart";
 
 export default function ProjectProgress() {
   return (
-    <Box>
+    <Box sx={{ marginX: "1rem" }}>
       <Box
         sx={{
           display: "flex",
