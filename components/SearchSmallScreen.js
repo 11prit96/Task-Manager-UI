@@ -51,8 +51,11 @@ export default function SearchSmallScreen() {
           sx={{
             width: "2rem",
             marginRight: "1rem",
-            border: "black",
+            border: "1px solid black",
+            borderRadius: "30%",
+            // border: "black",
             position: "absolute",
+            outline: "none",
             right: "45px",
           }}
         />

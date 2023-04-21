@@ -36,7 +36,7 @@ function a11yProps(index) {
   };
 }
 
-export default function ScrollableTabsButtonPrevent() {
+export default function ableTabsButtonPrevent() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -48,9 +48,9 @@ export default function ScrollableTabsButtonPrevent() {
       <Tabs
         value={value}
         onChange={handleChange}
-        variant="scrollable"
-        scrollButtons={false}
-        aria-label="scrollable prevent tabs example"
+        variant="able"
+        Buttons={false}
+        aria-label="able prevent tabs example"
       >
         <Tab
           sx={{ textTransform: "none", marginRight: "1rem" }}

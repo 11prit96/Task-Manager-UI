@@ -18,21 +18,7 @@ import { SidebarState } from "@/store/context";
 import SearchIcon from "@mui/icons-material/Search";
 
 export default function Home() {
-  // const { sidebar, handleSidebar } = SidebarState();
-  // console.log(sidebar)
-  // console.log(handleSidebar)
-
-  // const menuRef = useRef();
-
-  // useEffect(() => {
-  //   console.log(menuRef);
-  //   document.addEventListener("mousedown", (e) => {
-  //     if (!menuRef.current.contains(e.target)) {
-  //       handleSidebar();
-  //     }
-  //   });
-  // }, []);
-
+ 
   return (
     <>
       <Head>

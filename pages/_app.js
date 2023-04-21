@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import theme from "@/src/theme";
 import { ThemeProvider } from "@mui/material";
-import Context, { SidebarState } from "@/store/context";
+import Context from "@/store/context";
 
 export default function App({ Component, pageProps }) {
   
